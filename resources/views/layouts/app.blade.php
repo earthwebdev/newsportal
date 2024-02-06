@@ -78,6 +78,9 @@
         </nav>
 
         <main class="py-4">
+            @auth
+               @yield('sidebar')
+            @endauth
             @yield('content')
         </main>
     </div>

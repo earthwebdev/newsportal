@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +22,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [FrontController::class, 'landingPage'])->name('landing-page');
+
+Route::resource('category', CategoryController::class)->names('category');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

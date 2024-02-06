@@ -12,7 +12,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::class;
+        return view("category.index", [
+            "categories"=> $categories,
+        ]);
     }
 
     /**
