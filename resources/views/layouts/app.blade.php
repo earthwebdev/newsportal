@@ -18,7 +18,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary text-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -49,6 +49,11 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home') }}">
+                                   Dashboard
+                                </a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
