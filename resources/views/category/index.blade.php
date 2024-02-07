@@ -1,4 +1,8 @@
-@extends('layouts.app')
+<x-back-layout>
+    tested
+</x-back-layout>
+
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -23,3 +27,4 @@
 </div>
 
 @endsection
+ --}}
