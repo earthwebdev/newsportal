@@ -12,7 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::class;
+        $categories = Category::get()->sortByDesc('id'); //orderBy("id","desc")->
         return view("category.index", [
             "categories"=> $categories,
         ]);

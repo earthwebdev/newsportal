@@ -10,6 +10,11 @@
 </head>
 <body>
     <x-base.back.navbar></x-base.back.navbar>
-   <div class="container"> {{ $slot }}</div>
+   <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-3"><x-base.back.sidebar/></div>
+            <div class="col-md-9">{{ $slot }}</div>
+        </div>
+    </div>
 </body>
 </html>
