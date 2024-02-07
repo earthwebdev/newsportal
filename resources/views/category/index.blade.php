@@ -19,8 +19,14 @@
                 <td>{{ $category->title }}</td>
                 <td>{{ $category->slug }}</td>
                 <td>{{ $category->status?'Active':'Inactive' }}</td>
-                <td></td>
-                <td>Action</td>
+                <td>
+                    @if ($category->image)
+                    <img height="100" src="{{ asset('storage/images/'.$category->image) }}"  alt="{{ $category->title }}" />
+                    @else
+                    <span class="text-danger">No  images uploaded</span>
+                    @endif
+                </td>
+                <td><a href="{{ route('category.edit', $category->id) }}" title="edit" class="btn btn-info">Edit</a></td>
               </tr>
             @endforeach
 

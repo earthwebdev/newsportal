@@ -43,7 +43,7 @@ class CategoryController extends Controller
         $filename = time(). '-' . $slug. '.'. $request->image->extension();
         $request->image->storeAs('/public/images/category/', $filename);
 
-        dd($filename);
+        //dd($filename);
         Category::create([
             'title'=> $request->title,
             'slug'  => $slug,
@@ -70,7 +70,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('category.edit', ['category' => $category]);
     }
 
     /**
@@ -78,7 +78,29 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        //dd($request->all());
+        if($request->slug == NULL || $request->slug == ""){
+            $slug = Str::slug($request->title);
+        }else{
+            $slug = Str::slug($request->slug);
+        }
+        $filename = $category->image;
+        if($request->image){
+            $filename = time(). '-' . $slug. '.'. $request->image->extension();
+            $request->image->storeAs('/public/images/category/', $filename);
+        }
+
+
+        //dd($filename);
+        $category->update([
+            'title'=> $request->title,
+            'slug'  => $slug,
+            'description'   => $request->description,
+            'image' => $filename,
+            'status'=> $request->status
+        ]);
+
+        return redirect()->route('category.index')->with('success','Category updated successfully.');
     }
 
     /**
