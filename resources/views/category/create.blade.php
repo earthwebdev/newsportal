@@ -1,6 +1,6 @@
 <x-back-layout>
     <h1>Create Category</h1>
-    <form action="{{ route('category.store') }}" method="POST" class="row g-3">
+    <form action="{{ route('category.store') }}" method="POST" class="row g-3" enctype="multipart/form-data">
         @csrf
         <div class="col-md-12">
           <label for="title" class="form-label">Title</label>
@@ -14,7 +14,10 @@
           <label for="description" class="form-label">Description</label>
           <textarea name="description" class="form-control" id="description"></textarea>
         </div>
-
+        <div class="form-group">
+            <label for="image">image</label>
+            <input type="file" name="image" class="form-control-file" id="image">
+          </div>
         <div class="col-md-4">
           <label for="status" class="form-label">Status</label>
           <select name="status" id="status" class="form-select">

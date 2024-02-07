@@ -33,16 +33,22 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
 
-        //dd($request->all());        if($request->slug == NULL || $request->slug == ""){
+        //dd($request->all());
+        if($request->slug == NULL || $request->slug == ""){
             $slug = Str::slug($request->title);
         }else{
             $slug = Str::slug($request->slug);
         }
 
+        $filename = time(). '-' . $slug. '.'. $request->image->extension();
+        $request->image->storeAs('/public/images/category/', $filename);
+
+        dd($filename);
         Category::create([
             'title'=> $request->title,
             'slug'  => $slug,
             'description'   => $request->description,
+            'image' => $filename,
             'status'=> $request->status
         ]);
 
