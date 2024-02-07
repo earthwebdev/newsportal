@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -23,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.create');
     }
 
     /**
@@ -31,7 +32,23 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        //dd($request->all());        if($request->slug == NULL || $request->slug == ""){
+            $slug = Str::slug($request->title);
+        }else{
+            $slug = Str::slug($request->slug);
+        }
+
+        Category::create([
+            'title'=> $request->title,
+            'slug'  => $slug,
+            'description'   => $request->description,
+            'status'=> $request->status
+        ]);
+
+        return redirect()->route('category.index')->with('success','Category added successfully.');
+
+
     }
 
     /**
