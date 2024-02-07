@@ -10,6 +10,6 @@
 </head>
 <body>
     <x-base.back.navbar></x-base.back.navbar>
-   <div> {{ $slot }}</div>
+   <div class="container"> {{ $slot }}</div>
 </body>
 </html>
