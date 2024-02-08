@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::get()->sortByDesc('id'); //orderBy("id","desc")->
+        //$categories = Category::get()->sortByDesc('id'); //orderBy("id","desc")->
+        $categories = Category::withCount("articles")->get()->sortByDesc("id");
         return view("category.index", [
             "categories"=> $categories,
         ]);
