@@ -5,15 +5,15 @@
         @method('put')
         <div class="col-md-12">
           <label for="title" class="form-label">Title</label>
-          <input name="title" type="text" class="form-control" id="title" value="{{ $category->title }}">
+          <input name="title" type="text" class="form-control" id="title" value="{{ old('title')?old('title'): $category->title }}">
         </div>
         <div class="col-md-12">
           <label for="slug" class="form-label">Slug</label>
-          <input name="slug" type="text" class="form-control" id="slug" value="{{ $category->slug }}">
+          <input name="slug" type="text" class="form-control" id="slug" value="{{ old('slug')?old('slug'): $category->slug }}">
         </div>
         <div class="col-12">
           <label for="description" class="form-label">Description</label>
-          <textarea name="description" class="form-control" id="description">{{ $category->description }}</textarea>
+          <textarea name="description" class="form-control" id="description">{{ old('descripiton')?old('description'):$category->description }}</textarea>
         </div>
         <div class="form-group">
             <label for="image">image</label>
@@ -28,8 +28,8 @@
           <label for="status" class="form-label">Status</label>
           <select name="status" id="status" class="form-select">
             <option selected>Choose...</option>
-            <option {{ $category->status == 1?'selected':'' }} value="1">Active</option>
-            <option {{ $category->status == 2?'selected':'' }}  value="2">Inactive</option>
+            <option {{ old('status') == 1 || $category->status == 1?'selected':'' }} value="1">Active</option>
+            <option {{ old('status') == 2 || $category->status == 2?'selected':'' }}  value="2">Inactive</option>
           </select>
         </div>
 

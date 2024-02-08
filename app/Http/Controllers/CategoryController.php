@@ -33,6 +33,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'slug'  =>'nullable|unique:categories,slug',
+            'description'   => 'nullable',
+            'image' => 'nullable|file|image|between:20,2048',
+            'status'    => 'required'
+        ]);
 
         //dd($request->all());
         if($request->slug == NULL || $request->slug == ""){
@@ -84,6 +91,14 @@ class CategoryController extends Controller
         if(!$category){
             return redirect()->route('category.index')->with('error','Category not found.');
         }
+
+        $request->validate([
+            'title' => 'required',
+            'slug'  =>'nullable|unique:categories,slug',
+            'description'   => 'nullable',
+            'image' => 'nullable|file|image|between:20,2048',
+            'status'    => 'required'
+        ]);
         //dd($request->all());
         if($request->slug == NULL || $request->slug == ""){
             $slug = Str::slug($request->title);
@@ -122,7 +137,7 @@ class CategoryController extends Controller
             return redirect()->route('category.index')->with('error','Category not found.');
         }
 
-        if(Storage::exists('/public/images/categories/'.$category->image)){
+        if($category->image && Storage::exists('/public/images/categories/'.$category->image)){
             Storage::delete('/public/images/categories/'.$category->image);
         }
         $category->delete();
