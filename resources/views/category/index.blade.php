@@ -2,14 +2,7 @@
     <h1>Categories</h1>
     <a href="{{ route('category.create') }}" class="btn btn-primary">Add Category</a>
 
-        @if(session('success'))
-        <div class="text-success">{{ session('success') }}</div>
-        @endif
-
-
-        @if(session('error'))
-        <div class="text-danger">{{ session('error') }}</div>
-        @endif
+        <x-base.back.alert-message />
 
     <table class="table">
         <thead>
