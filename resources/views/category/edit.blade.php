@@ -19,7 +19,7 @@
             <label for="image">image</label>
             <input type="file" name="image" class="form-control-file" id="image">
             @if ($category->image)
-                    <img height="100" src="{{ asset('storage/images/'.$category->image) }}"  alt="{{ $category->title }}" />
+                    <img height="100" src="{{ asset('storage/images/categories/'.$category->image) }}"  alt="{{ $category->title }}" />
                     @else
                     <span class="text-danger">No  images uploaded</span>
                     @endif
@@ -28,8 +28,8 @@
           <label for="status" class="form-label">Status</label>
           <select name="status" id="status" class="form-select">
             <option selected>Choose...</option>
-            <option value="1">Active</option>
-            <option value="2">Inactive</option>
+            <option {{ $category->status == 1?'selected':'' }} value="1">Active</option>
+            <option {{ $category->status == 2?'selected':'' }}  value="2">Inactive</option>
           </select>
         </div>
 

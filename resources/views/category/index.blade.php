@@ -1,6 +1,16 @@
 <x-back-layout>
     <h1>Categories</h1>
     <a href="{{ route('category.create') }}" class="btn btn-primary">Add Category</a>
+
+        @if(session('success'))
+        <div class="text-success">{{ session('success') }}</div>
+        @endif
+
+
+        @if(session('error'))
+        <div class="text-danger">{{ session('error') }}</div>
+        @endif
+
     <table class="table">
         <thead>
           <tr>
@@ -21,12 +31,19 @@
                 <td>{{ $category->status?'Active':'Inactive' }}</td>
                 <td>
                     @if ($category->image)
-                    <img height="100" src="{{ asset('storage/images/'.$category->image) }}"  alt="{{ $category->title }}" />
+                    <img height="100" src="{{ asset('storage/images/categories/'.$category->image) }}"  alt="{{ $category->title }}" />
                     @else
                     <span class="text-danger">No  images uploaded</span>
                     @endif
                 </td>
-                <td><a href="{{ route('category.edit', $category->id) }}" title="edit" class="btn btn-info">Edit</a></td>
+                <td>
+                    <a href="{{ route('category.edit', $category->id) }}" title="edit" class="btn btn-info">Edit</a>
+                    <form action="{{ route('category.destroy', $category->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button onclick="return confirm('Are you sure you want to delete this category?')" type="submit">Delete</button>
+                    </form>
+                </td>
               </tr>
             @endforeach
 
