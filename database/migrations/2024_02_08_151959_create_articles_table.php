@@ -16,11 +16,10 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('content');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->enum('status', ['active','inactive'])->default('inactive');
 
-            $table->foreignId('cateogry_id')->constrained('categories');
-
+            $table->foreignId('category_id')->constrained('categories');
 
             $table->timestamps();
         });

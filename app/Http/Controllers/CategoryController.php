@@ -15,7 +15,8 @@ class CategoryController extends Controller
     public function index()
     {
         //$categories = Category::get()->sortByDesc('id'); //orderBy("id","desc")->
-        $categories = Category::withCount("articles")->get()->sortByDesc("id");
+        //$categories = Category::withCount("articles")->get()->sortByDesc("id");
+        $categories = Category::withCount("articles")->orderBy("id",'desc')->paginate(2);
         return view("category.index", [
             "categories"=> $categories,
         ]);
@@ -38,8 +39,11 @@ class CategoryController extends Controller
             'title' => 'required',
             'slug'  =>'nullable|unique:categories,slug',
             'description'   => 'nullable',
-            'image' => 'nullable|file|image|between:20,2048',
+            'image' => 'nullable|file|image|between:2,2048',
             'status'    => 'required'
+        ],[
+            'title.required'    => 'Please enter the title',
+            'status.required'   => 'Pleases enter the status'
         ]);
 
         //dd($request->all());
@@ -48,15 +52,18 @@ class CategoryController extends Controller
         }else{
             $slug = Str::slug($request->slug);
         }
+        $filename_img = '';
+        if($request->image){
+            $filename_img = time(). '-' . $slug. '.'. $request->image->extension();
+            $request->image->storeAs('/public/images/categories/', $filename_img);
 
-        $filename = time(). '-' . $slug. '.'. $request->image->extension();
-        $request->image->storeAs('/public/images/categories/', $filename);
+        }
 
         Category::create([
             'title'=> $request->title,
             'slug'  => $slug,
             'description'   => $request->description,
-            'image' => $filename,
+            'image' => $filename_img,
             'status'=> $request->status
         ]);
 
@@ -97,8 +104,11 @@ class CategoryController extends Controller
             'title' => 'required',
             'slug'  =>'nullable|unique:categories,slug',
             'description'   => 'nullable',
-            'image' => 'nullable|file|image|between:20,2048',
+            'image' => 'nullable|file|image|between:2,2048',
             'status'    => 'required'
+        ],[
+            'title.required'    => 'Please enter the title',
+            'status.required'   => 'Pleases enter the status'
         ]);
         //dd($request->all());
         if($request->slug == NULL || $request->slug == ""){
