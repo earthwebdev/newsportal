@@ -1,4 +1,4 @@
 <x-front-layout>
 
-    front views
+    <x-base.front.topbar/>
 </x-front-layout>

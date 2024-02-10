@@ -22,8 +22,11 @@ use App\Http\Controllers\CategoryController;
 
 Auth::routes();
 
-Route::get('/', [FrontController::class, 'landingPage'])->name('landing-page');
+
 
 Route::resource('category', CategoryController::class)->names('category');
 Route::resource('article', ArticleController::class)->names('article');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/', [FrontController::class, 'landingPage'])->name('landing-page');
