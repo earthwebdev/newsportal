@@ -1,0 +1,3 @@
+<div>
+    Recent news
+</div>
