@@ -98,7 +98,7 @@ class ArticleController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'slug'  =>'nullable|unique:articles,slug',
+            'slug'  =>'nullable|unique:articles,slug,'.$article->id,
             'content'   => 'required',
             'image' => 'nullable|file|image|between:2,2048',
             'status'    => 'required',
