@@ -13,9 +13,9 @@ class ArticleWithoutDescription extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($id)
     {
-        $this->article = Article::find(22);
+        $this->article = Article::find($id);
     }
 
     /**

@@ -9,13 +9,13 @@ use Illuminate\View\Component;
 
 class RecentNews extends Component
 {
-    public $articles;
+    public $news;
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        $this->articles = Article::latest()->limit(5)->get();
+        $this->news = Article::orderByDesc('created_at')->limit(5)->get();
         //dd($this->articles);
     }
 

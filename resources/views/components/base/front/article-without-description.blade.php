@@ -6,10 +6,12 @@
                     @endif
         </div>
         <div class="col-9">
-            <div><span class="bg-primary text-white p-1 fs-6">{{ $article->category->title }}</span></div>
+            <div>
+                <span class="bg-primary text-white p-1 fs-6">{{ $article->category->title }}</span>
+            </div>
 
             <div class="mt-2">
-                <h2 class="fw-bolder" style="text-align:justify">
+                <h2 class="fw-bolder" >
                     {{ $article->title}}
 
                 </h2>
