@@ -3,17 +3,19 @@
 namespace App\View\Components\Base\Front;
 
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Article;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class TopNews extends Component
 {
+    public $article;
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        //
+        $this->article = Article::orderByDesc('views')->first();
     }
 
     /**
