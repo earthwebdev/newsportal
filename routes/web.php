@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ArticleController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -30,3 +31,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/', [FrontController::class, 'landingPage'])->name('landing-page');
+Route::get('/articles/{slug}', [FrontController::class, 'articleView'])->name('article-page');
