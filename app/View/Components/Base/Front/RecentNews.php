@@ -13,9 +13,9 @@ class RecentNews extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($count = 5)
     {
-        $this->news = Article::orderByDesc('created_at')->limit(4)->get();
+        $this->news = Article::orderByDesc('created_at')->limit($count)->get();
         //dd($this->articles);
     }
 

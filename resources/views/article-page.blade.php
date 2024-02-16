@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="col-4">
-                <x-base.front.recent-news />
+                <x-base.front.recent-news :count="10" />
             </div>
         </div>
     </div>
