@@ -11,7 +11,7 @@
             </div>
             <div class="mt-2">
                 <h2 class="fw-bolder" >
-                    {{ $article->title}}
+                    <a class="link-dark text-decoration-none" href="{{ route('article-page', $article->slug) }}" title="{{ $article->title }}">{{ $article->title }}</a>
 
                 </h2>
             </div>
