@@ -9,7 +9,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <x-base.back.navbar></x-base.back.navbar>
+    <x-base.back.navbar />
    <div class="container mt-4">
         <div class="row">
             <div class="col-md-3"><x-base.back.sidebar/></div>
