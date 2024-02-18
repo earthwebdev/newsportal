@@ -16,5 +16,6 @@
             <div class="col-md-9">{{ $slot }}</div>
         </div>
     </div>
+    @yield('scripts')
 </body>
 </html>

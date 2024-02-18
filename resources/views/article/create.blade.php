@@ -60,4 +60,14 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </form>
+      @section('scripts')
+      <script src="https://cdn.tiny.cloud/1/{{ env('TINY_MCE_SECRET_KEY') }}/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+      <script>
+        tinymce.init({
+          selector: 'textarea#content', // Replace this CSS selector to match the placeholder element for TinyMCE
+          plugins: 'code table lists',
+          toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
+        });
+      </script>
+      @endsection
 </x-back-layout>
