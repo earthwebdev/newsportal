@@ -32,3 +32,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/', [FrontController::class, 'landingPage'])->name('landing-page');
 Route::get('/articles/{slug}', [FrontController::class, 'articleView'])->name('article-page');
+Route::get('/categories/{slug}', [FrontController::class, 'categoryView'])->name('category-page');

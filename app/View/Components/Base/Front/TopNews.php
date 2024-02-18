@@ -15,7 +15,7 @@ class TopNews extends Component
      */
     public function __construct()
     {
-        $this->article = Article::orderByDesc('views')->first();
+        $this->article = Article::with('category')->orderByDesc('views')->first();
     }
 
     /**

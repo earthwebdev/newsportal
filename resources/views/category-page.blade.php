@@ -1,29 +1,19 @@
+
+
 <x-front-layout>
     <div class="container mt-4">
-        <div class="row">
-            <div class="col-8">
-                <div>
-                    <img class="w-100" src="{{ asset('storage/images/articles/'.$article->image) }}" alt="{{ $article->title }}" />
-                </div>
-                <div class="text-center mt-4">
-                    <span class="bg-primary p-2 text-white">{{ $article->category->title }}</span>
-                    <h1 class="display-5 mt-2">{{ $article->title }}</h1>
-                </div>
+        <h1>
+            {{ $category->title }}
+        </h1>
+        <h6>
+            Total Articles: {{ $category->articles_count }}
+        </h6>
 
-                <div class="d-flex justify-content-start gap-2 fs-5" style="color: #555555">
-                    <div>{{ $article->created_at->isoFormat("MMMM D, YYYY") }}</div>
-                    <div>|</div>
-                    <div>{{ $article->views }} Views</div>
-                </div>
-                <div class="mt-4 " style="text-align:justify">
-                    {!! $article->content !!}
-                </div>
-            </div>
-            <div class="col-4">
-                <x-base.front.recent-news />
-            </div>
+        <div class="mt-4">
+
+            @foreach ( $category->articles as $article)
+                <x-base.front.article-with-description :article="$article" />
+                @endforeach
         </div>
     </div>
-
-
 </x-front-layout>

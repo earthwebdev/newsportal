@@ -20,9 +20,8 @@ class FrontController extends Controller
     }
 
     public function categoryView($slug){
-        $category = Category::where("slug",$slug)->firstOrFail();
-        $articles = Article::where("id",$category->id)->get();
-        return view("category-page",compact("category", "articles"));
+        $category = Category::withCount('articles')->with('articles.category')->where("slug",$slug)->firstOrFail();
+        return view("category-page",compact("category"));
     }
 
 }

@@ -13,9 +13,9 @@ class ArticleWithDescription extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($id)
+    public function __construct($article)
     {
-        $this->article = Article::find($id);
+        $this->article = $article;// Article::find($id);
     }
 
     /**
