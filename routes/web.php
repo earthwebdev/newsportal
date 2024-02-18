@@ -35,7 +35,7 @@ Route::get('/categories/{slug}', [FrontController::class, 'categoryView'])->name
 
 Route::group([
     'prefix'=> 'backend',
-    'middleware' => 'auth'
+    'middleware' => ['authorize']
 ],
     function(){
         Route::resource('category', CategoryController::class)->names('category');

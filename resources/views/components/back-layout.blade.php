@@ -12,7 +12,13 @@
     <x-base.back.navbar />
    <div class="container mt-4">
         <div class="row">
-            <div class="col-md-3"><x-base.back.sidebar/></div>
+            <div class="col-md-3">
+                @if (auth()->user()->role != 'user')
+                <x-base.back.sidebar/>
+                @endif
+
+
+            </div>
             <div class="col-md-9">{{ $slot }}</div>
         </div>
     </div>
